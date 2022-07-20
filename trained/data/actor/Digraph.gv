@@ -1,0 +1,89 @@
+digraph {
+	graph [size="12,12"]
+	node [align=left fontname=monospace fontsize=10 height=0.2 ranksep=0.1 shape=box style=filled]
+	4751603408 [label="
+ (1, 83)" fillcolor=darkolivegreen1]
+	5364331472 [label=AddmmBackward0]
+	5364331280 -> 5364331472
+	4774037520 [label="FC5.bias
+ (83)" fillcolor=lightblue]
+	4774037520 -> 5364331280
+	5364331280 [label=AccumulateGrad]
+	5364331376 -> 5364331472
+	5364331376 [label=ReluBackward0]
+	5364331664 -> 5364331376
+	5364331664 [label=AddmmBackward0]
+	5364330992 -> 5364331664
+	4774037680 [label="FC4.bias
+ (128)" fillcolor=lightblue]
+	4774037680 -> 5364330992
+	5364330992 [label=AccumulateGrad]
+	5364331088 -> 5364331664
+	5364331088 [label=ReluBackward0]
+	5364330800 -> 5364331088
+	5364330800 [label=AddmmBackward0]
+	5364330608 -> 5364330800
+	4774037840 [label="FC3.bias
+ (128)" fillcolor=lightblue]
+	4774037840 -> 5364330608
+	5364330608 [label=AccumulateGrad]
+	5364428656 -> 5364330800
+	5364428656 [label=ReluBackward0]
+	5364428464 -> 5364428656
+	5364428464 [label=AddmmBackward0]
+	5364428080 -> 5364428464
+	4346219392 [label="FC2.bias
+ (256)" fillcolor=lightblue]
+	4346219392 -> 5364428080
+	5364428080 [label=AccumulateGrad]
+	5364428176 -> 5364428464
+	5364428176 [label=ReluBackward0]
+	5364427888 -> 5364428176
+	5364427888 [label=AddmmBackward0]
+	5364427504 -> 5364427888
+	4774015600 [label="FC1.bias
+ (256)" fillcolor=lightblue]
+	4774015600 -> 5364427504
+	5364427504 [label=AccumulateGrad]
+	5364427600 -> 5364427888
+	4751603488 [label="x
+ (1, 350)" fillcolor=lightblue]
+	4751603488 -> 5364427600
+	5364427600 [label=AccumulateGrad]
+	5364427696 -> 5364427888
+	5364427696 [label=TBackward0]
+	5364427120 -> 5364427696
+	4774016880 [label="FC1.weight
+ (256, 350)" fillcolor=lightblue]
+	4774016880 -> 5364427120
+	5364427120 [label=AccumulateGrad]
+	5364428272 -> 5364428464
+	5364428272 [label=TBackward0]
+	5364427216 -> 5364428272
+	4774015200 [label="FC2.weight
+ (256, 256)" fillcolor=lightblue]
+	4774015200 -> 5364427216
+	5364427216 [label=AccumulateGrad]
+	5364428752 -> 5364330800
+	5364428752 [label=TBackward0]
+	5364427408 -> 5364428752
+	4774037920 [label="FC3.weight
+ (128, 256)" fillcolor=lightblue]
+	4774037920 -> 5364427408
+	5364427408 [label=AccumulateGrad]
+	5364331184 -> 5364331664
+	5364331184 [label=TBackward0]
+	5364330704 -> 5364331184
+	4774037760 [label="FC4.weight
+ (128, 128)" fillcolor=lightblue]
+	4774037760 -> 5364330704
+	5364330704 [label=AccumulateGrad]
+	5364331568 -> 5364331472
+	5364331568 [label=TBackward0]
+	5364330896 -> 5364331568
+	4774037600 [label="FC5.weight
+ (83, 128)" fillcolor=lightblue]
+	4774037600 -> 5364330896
+	5364330896 [label=AccumulateGrad]
+	5364331472 -> 4751603408
+}
