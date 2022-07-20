@@ -1,13 +1,25 @@
+import os
+
 import torch as th
 import torch.nn.functional as F
 
 import numpy as np
 from torchviz import make_dot
 
+device = th.device("cuda") if th.cuda.is_available() else th.device("cpu")
+
 BoolTensor = th.BoolTensor
 FloatTensor = th.FloatTensor
-root = 'trained/model/'
-device = th.device("cuda") if th.cuda.is_available() else th.device("cpu")
+
+logs_path = 'trained/logs/'
+graph_path = 'trained/graph/'
+model_path = 'trained/model/'
+if not os.path.exists(logs_path):
+    os.mkdir(logs_path)
+if not os.path.exists(graph_path):
+    os.mkdir(graph_path)
+if not os.path.exists(model_path):
+    os.mkdir(model_path)
 
 
 def to_torch(np_array):
@@ -32,7 +44,7 @@ def net_visual(dim_input, net, name):
     net_vis = make_dot(y, params=dict(list(net.named_parameters()) + [('x', x) for x in xs]))
     net_vis.format = "png"
     # 指定文件生成的文件夹
-    net_vis.directory = "trained/data/{}".format(name)
+    net_vis.directory = graph_path + "{}".format(name)
     # 生成文件
     net_vis.view()
 

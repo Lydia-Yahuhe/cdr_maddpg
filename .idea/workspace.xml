@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1a082f9c-24d6-4712-84a5-2147f912b1b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/algo/maddpg_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/maddpg_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algo/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/misc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/normalized_env.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/normalized_env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/random_process.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/random_process.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/data/actor/Digraph.gv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/data/actor/Digraph.gv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/data/critic/Digraph.gv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/data/critic/Digraph.gv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/events.out.tfevents.1658301008.xiaogedeMac-mini.local.1949.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/events.out.tfevents.1658301354.xiaogedeMac-mini.local.2080.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/sr_episode/events.out.tfevents.1658301035.xiaogedeMac-mini.local.1949.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/sr_step/events.out.tfevents.1658301035.xiaogedeMac-mini.local.1949.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/model/actor.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/model/critic.pth" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/train.avi" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,14 +79,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658300378627</updated>
-      <workItem from="1658300379733" duration="881000" />
+      <workItem from="1658300379733" duration="1531000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cdr_maddpg$train.coverage" NAME="train Coverage Results" MODIFIED="1658301006436" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cdr_maddpg$train.coverage" NAME="train Coverage Results" MODIFIED="1658301353313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

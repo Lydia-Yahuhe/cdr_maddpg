@@ -1,4 +1,3 @@
-import os
 from copy import deepcopy
 
 from torch.optim import Adam
@@ -30,28 +29,25 @@ class MADDPG:
         self.batch_size = args.batch_size
 
         if record:
-            self.writer = SummaryWriter('trained/logs/')
+            self.writer = SummaryWriter(logs_path+args.experiment_id)
         else:
             self.writer = None
         self.c_loss, self.a_loss = [], []
-        # net_visual([(1, dim_obs)], self.actor, 'actor')
-        # net_visual([(1, 2, dim_obs), (1, 2, dim_act)], self.critic, 'critic')
+        net_visual([(1, dim_obs)], self.actor, 'actor')
+        net_visual([(1, 2, dim_obs), (1, 2, dim_act)], self.critic, 'critic')
 
     def load_model(self):
         print("load model!")
-        actor = th.load(root + "actor.pth")
-        critic = th.load(root + "critic.pth")
+        actor = th.load(model_path + "actor.pth")
+        critic = th.load(model_path + "critic.pth")
         self.actor.load_state_dict(actor.state_dict())
         self.critic.load_state_dict(critic.state_dict())
         self.actor_target = deepcopy(self.actor)
         self.critic_target = deepcopy(self.critic)
 
     def save_model(self):
-        if not os.path.exists(root):
-            os.mkdir(root)
-
-        th.save(self.actor, root + 'actor.pth')
-        th.save(self.critic, root + 'critic.pth')
+        th.save(self.actor, model_path + 'actor.pth')
+        th.save(self.critic, model_path + 'critic.pth')
 
     def update(self, step):
         transitions = self.memory.sample(self.batch_size)
