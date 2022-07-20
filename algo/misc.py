@@ -7,6 +7,23 @@ from torchviz import make_dot
 BoolTensor = th.BoolTensor
 FloatTensor = th.FloatTensor
 root = 'trained/model/'
+device = th.device("cuda") if th.cuda.is_available() else th.device("cpu")
+
+
+def to_torch(np_array):
+    return th.from_numpy(np_array)
+
+
+def fanin_init(size, fanin=None):
+    fanin = fanin or size[0]
+    v = 1. / np.sqrt(fanin)
+    return th.Tensor(size).uniform_(-v, v)
+
+
+def weight_init(m):
+    if isinstance(m, th.nn.Conv2d) or isinstance(m, th.nn.Linear):
+        m.weight.data.fill_(0.)
+        m.bias.data.fill_(0.)
 
 
 def net_visual(dim_input, net, name):

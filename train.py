@@ -3,7 +3,7 @@ import argparse
 from flightEnv.env import ConflictEnv
 
 from algo.maddpg_agent import MADDPG
-from algo.utils import *
+from algo.misc import *
 
 
 def args_parse():
@@ -27,7 +27,7 @@ def args_parse():
 
 def train():
     args = args_parse()
-    torch.manual_seed(args.seed)
+    th.manual_seed(args.seed)
 
     env = ConflictEnv(x=0, size=1, ratio=1.0)
     model = MADDPG(env.observation_space.shape[0], env.action_space.n,
@@ -48,10 +48,10 @@ def train():
             # env.render(counter='{}_{}_{}'.format(t, step, episode))
 
             # replay buffer R
-            obs = torch.from_numpy(np.stack(states)).float().to(device)
-            next_obs = torch.from_numpy(np.stack(next_states)).float().to(device)
-            rw_tensor = torch.FloatTensor(np.array([sum(rewards)])).to(device)
-            ac_tensor = torch.FloatTensor(actions).to(device)
+            obs = th.from_numpy(np.stack(states)).float().to(device)
+            next_obs = th.from_numpy(np.stack(next_states)).float().to(device)
+            rw_tensor = th.FloatTensor(np.array([sum(rewards)])).to(device)
+            ac_tensor = th.FloatTensor(actions).to(device)
             model.memory.push(obs.data, ac_tensor, next_obs.data, rw_tensor)
             # states = next_states
 
