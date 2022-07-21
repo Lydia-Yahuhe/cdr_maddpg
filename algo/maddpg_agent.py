@@ -130,9 +130,9 @@ class MADDPG:
             act = self.actor(state.detach().unsqueeze(0)).squeeze()
             if noisy:
                 act += th.from_numpy(np.random.randn(act.shape[-1]) * self.var).type(FloatTensor)
-                act /= th.max(act)
             actions.append(act)
         actions = th.stack(actions)
+        actions = th.clamp(actions, -1, 1)
 
         if self.var > 0.05:
             self.var *= 0.99995

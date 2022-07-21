@@ -78,7 +78,7 @@ def train():
 
         solved_epi.append(float(done))
 
-        if episode % 10 == 0:
+        if episode % 100 == 0:
             model.scalar("reward", np.mean(rew_epi), episode)
             model.scalars("sr", {'step': np.mean(solved_step),
                                  'episode': np.mean(solved_epi)}, episode)

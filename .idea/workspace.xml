@@ -4,19 +4,17 @@
     <list default="true" id="1a082f9c-24d6-4712-84a5-2147f912b1b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algo/maddpg_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/maddpg_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/memory.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/memory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/misc.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/misc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algo/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/algo/network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/evaluate.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flightEnv/cmd.py" beforeDir="false" afterPath="$PROJECT_DIR$/flightEnv/cmd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flightEnv/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/flightEnv/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flightEnv/scenario.py" beforeDir="false" afterPath="$PROJECT_DIR$/flightEnv/scenario.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/flightSim/load.py" beforeDir="false" afterPath="$PROJECT_DIR$/flightSim/load.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/train.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trained/logs/exp_0/events.out.tfevents.1658302009.xiaogedeMac-mini.local.2590.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trained/logs/exp_0/sr_episode/events.out.tfevents.1658302037.xiaogedeMac-mini.local.2590.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trained/logs/exp_0/sr_step/events.out.tfevents.1658302037.xiaogedeMac-mini.local.2590.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/trained/train.avi" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/train_0/events.out.tfevents.1658366418.xiaogedeMac-mini.local.10035.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/train_0/loss_actor/events.out.tfevents.1658367207.xiaogedeMac-mini.local.10035.4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/train_0/loss_critic/events.out.tfevents.1658367207.xiaogedeMac-mini.local.10035.3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/train_0/sr_episode/events.out.tfevents.1658366440.xiaogedeMac-mini.local.10035.2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/logs/train_0/sr_step/events.out.tfevents.1658366440.xiaogedeMac-mini.local.10035.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/model/actor.pth" beforeDir="false" afterPath="$PROJECT_DIR$/trained/model/actor.pth" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trained/model/critic.pth" beforeDir="false" afterPath="$PROJECT_DIR$/trained/model/critic.pth" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +53,29 @@
       <recent name="$PROJECT_DIR$/scripts" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.train">
+  <component name="RunManager" selected="Python.evaluate">
+    <configuration name="evaluate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="cdr_maddpg" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/evaluate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="misc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="cdr_maddpg" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,6 +144,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.evaluate" />
         <item itemvalue="Python.train" />
         <item itemvalue="Python.test" />
         <item itemvalue="Python.misc" />
@@ -138,7 +159,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1658300378627</updated>
-      <workItem from="1658300379733" duration="21424000" />
+      <workItem from="1658300379733" duration="35965000" />
     </task>
     <servers />
   </component>
@@ -157,7 +178,8 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/cdr_maddpg$train.coverage" NAME="train Coverage Results" MODIFIED="1658366417127" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cdr_maddpg$train.coverage" NAME="train Coverage Results" MODIFIED="1658369805184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/cdr_maddpg$evaluate.coverage" NAME="evaluate Coverage Results" MODIFIED="1658406083933" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/cdr_maddpg$misc.coverage" NAME="misc Coverage Results" MODIFIED="1658321917378" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/algo" />
     <SUITE FILE_PATH="coverage/cdr_maddpg$test.coverage" NAME="test Coverage Results" MODIFIED="1658325795341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>

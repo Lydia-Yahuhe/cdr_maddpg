@@ -2,33 +2,28 @@ import numpy as np
 
 from flightSim.aircraft import AltCmd, HdgCmd, SpdCmd
 
-CmdCount = [20, 7, 20, 9, 20, 7]
+CmdCount = 6
+tmp = [20, 7, 20, 9, 20, 7]
 
 
 def int_2_cmd(now: int, idx: list):
     # alt cmd
-    logits_time = idx[:CmdCount[0]]
-    time_idx, cmd_idx = int(np.argmax(logits_time))*10, idx[CmdCount[0]:]
-
-    logits_alt = cmd_idx[:CmdCount[1]]
-    alt_idx, cmd_idx = int(np.argmax(logits_alt)), cmd_idx[CmdCount[1]:]
-    alt_cmd = AltCmd(delta=(alt_idx - 3) * 300.0, assignTime=now+time_idx)
-    print('{:>3d}({:>4.2f}) {:>2d}({:>4.2f})'.format(time_idx, max(logits_time), alt_idx, max(logits_alt)), end='\t')
+    time_idx = int((idx[0]+1)*100)
+    alt_idx = int(idx[1]*3)
+    alt_cmd = AltCmd(delta=alt_idx * 300.0, assignTime=now+time_idx)
+    print('{:>3d}({:>+4.2f}) {:>+3d}({:>+4.2f})'.format(time_idx, idx[0], alt_idx, idx[1]), end='\t')
 
     # hdg cmd
-    logits_time = cmd_idx[:CmdCount[2]]
-    time_idx, cmd_idx = int(np.argmax(logits_time))*10, cmd_idx[CmdCount[2]:]
-    logits_hdg = cmd_idx[:CmdCount[3]]
-    hdg_idx, cmd_idx = int(np.argmax(logits_hdg)), cmd_idx[CmdCount[3]:]
-    hdg_cmd = HdgCmd(delta=(hdg_idx - 4) * 15, assignTime=now+time_idx)
-    print('{:>3d}({:>4.2f}) {:>2d}({:>4.2f})'.format(time_idx, max(logits_time), hdg_idx, max(logits_hdg)), end='\t')
+    time_idx = int((idx[2]+1)*100)
+    hdg_idx = idx[3]*4
+    hdg_cmd = HdgCmd(delta=hdg_idx * 15.0, assignTime=now+time_idx)
+    print('{:>3d}({:>+4.2f}) {:>+3.1f}({:>+4.2f})'.format(time_idx, idx[2], hdg_idx, idx[3]), end='\t')
 
     # spd cmd
-    logits_time = cmd_idx[:CmdCount[4]]
-    time_idx, logits_spd = int(np.argmax(logits_time))*10, cmd_idx[CmdCount[4]:]
-    spd_idx = int(np.argmax(logits_spd))
-    spd_cmd = SpdCmd(delta=(spd_idx - 3) * 10, assignTime=now+time_idx)
-    print('{:>3d}({:>4.2f}) {:>2d}({:>4.2f})'.format(time_idx, max(logits_time), spd_idx, max(logits_spd)), end='\t')
+    time_idx = int((idx[4]+1)*100)
+    spd_idx = idx[5]*3
+    spd_cmd = SpdCmd(delta=spd_idx * 10, assignTime=now+time_idx)
+    print('{:>3d}({:>+4.2f}) {:>+3.1f}({:>+4.2f})'.format(time_idx, idx[4], spd_idx, idx[5]), end='\t')
 
     return [alt_cmd, hdg_cmd, spd_cmd]
 

@@ -51,6 +51,8 @@ def train():
         print('mean sr_epi:', np.mean(solved_epi))
         print('mean sr_step:', np.mean(solved_step))
 
+        break
+
     model.close()
 
 

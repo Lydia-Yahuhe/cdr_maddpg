@@ -38,7 +38,7 @@ class ConflictEnv(gym.Env, ABC):
         self.train, self.test = load_and_split_data(size=size, ratio=ratio)
 
         self.discrete_list = CmdCount
-        self.action_space = spaces.Discrete(sum(CmdCount))
+        self.action_space = spaces.Discrete(CmdCount)
         self.observation_space = spaces.Box(low=-np.inf, high=+np.inf, shape=(350, ), dtype=np.float64)
 
         print('----------env----------')
