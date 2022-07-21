@@ -25,13 +25,20 @@ class ReplayMemory:
         memory[position] = Experience(*args)
         self.position[key] = int((position + 1) % self.capacity)
 
-    def sample(self, batch_size):
-        samples = {}
+    # def sample(self, batch_size):
+    #     samples = {}
+    #     for n, memory in self.memory.items():
+    #         # print(n, len(memory))
+    #         if len(memory) >= batch_size:
+    #             samples[n] = random.sample(memory, batch_size)
+    #     return samples
+
+    def sample(self, batch_size, num_iter):
         for n, memory in self.memory.items():
-            # print(n, len(memory))
-            if len(memory) >= batch_size:
-                samples[n] = random.sample(memory, batch_size)
-        return samples
+            if len(memory) < batch_size:
+                continue
+
+            yield n, [random.sample(memory, batch_size) for _ in range(num_iter)]
 
     def __len__(self):
         return len(self.memory)

@@ -4,7 +4,7 @@ from flightEnv import ConflictScene
 from flightEnv.env import ConflictEnv
 
 from algo.maddpg_agent import MADDPG
-from algo.utils import *
+from algo.misc import *
 
 from train import args_parse
 

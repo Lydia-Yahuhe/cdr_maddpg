@@ -49,7 +49,7 @@ class ConflictEnv(gym.Env, ABC):
         print('-----------------------')
 
         self.scene = None
-        self.video_out = cv2.VideoWriter('trained/train.avi',
+        self.video_out = cv2.VideoWriter('trained/scenario.avi',
                                          cv2.VideoWriter_fourcc(*'MJPG'), fps, (width, length))
 
     def reset(self, mode='next_p'):

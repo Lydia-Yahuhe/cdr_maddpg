@@ -7,22 +7,28 @@ CmdCount = [20, 7, 20, 9, 20, 7]
 
 def int_2_cmd(now: int, idx: list):
     # alt cmd
-    time_idx, cmd_idx = int(np.argmax(idx[:CmdCount[0]]))*10, idx[CmdCount[0]:]
-    alt_idx, cmd_idx = int(np.argmax(cmd_idx[:CmdCount[1]])), cmd_idx[CmdCount[1]:]
+    logits_time = idx[:CmdCount[0]]
+    time_idx, cmd_idx = int(np.argmax(logits_time))*10, idx[CmdCount[0]:]
+
+    logits_alt = cmd_idx[:CmdCount[1]]
+    alt_idx, cmd_idx = int(np.argmax(logits_alt)), cmd_idx[CmdCount[1]:]
     alt_cmd = AltCmd(delta=(alt_idx - 3) * 300.0, assignTime=now+time_idx)
-    print('{:>3d} {:>2d}'.format(time_idx, alt_idx), end='\t')
+    print('{:>3d}({:>4.2f}) {:>2d}({:>4.2f})'.format(time_idx, max(logits_time), alt_idx, max(logits_alt)), end='\t')
 
     # hdg cmd
-    time_idx, cmd_idx = int(np.argmax(cmd_idx[:CmdCount[2]]))*10, cmd_idx[CmdCount[2]:]
-    hdg_idx, cmd_idx = int(np.argmax(cmd_idx[:CmdCount[3]])), cmd_idx[CmdCount[3]:]
+    logits_time = cmd_idx[:CmdCount[2]]
+    time_idx, cmd_idx = int(np.argmax(logits_time))*10, cmd_idx[CmdCount[2]:]
+    logits_hdg = cmd_idx[:CmdCount[3]]
+    hdg_idx, cmd_idx = int(np.argmax(logits_hdg)), cmd_idx[CmdCount[3]:]
     hdg_cmd = HdgCmd(delta=(hdg_idx - 4) * 15, assignTime=now+time_idx)
-    print('{:>3d} {:>2d}'.format(time_idx, hdg_idx), end='\t')
+    print('{:>3d}({:>4.2f}) {:>2d}({:>4.2f})'.format(time_idx, max(logits_time), hdg_idx, max(logits_hdg)), end='\t')
 
     # spd cmd
-    time_idx, cmd_idx = int(np.argmax(cmd_idx[:CmdCount[4]]))*10, cmd_idx[CmdCount[4]:]
-    spd_idx = int(np.argmax(cmd_idx))
+    logits_time = cmd_idx[:CmdCount[4]]
+    time_idx, logits_spd = int(np.argmax(logits_time))*10, cmd_idx[CmdCount[4]:]
+    spd_idx = int(np.argmax(logits_spd))
     spd_cmd = SpdCmd(delta=(spd_idx - 3) * 10, assignTime=now+time_idx)
-    print('{:>3d} {:>2d}'.format(time_idx, spd_idx), end='\t')
+    print('{:>3d}({:>4.2f}) {:>2d}({:>4.2f})'.format(time_idx, max(logits_time), spd_idx, max(logits_spd)), end='\t')
 
     return [alt_cmd, hdg_cmd, spd_cmd]
 

@@ -8,11 +8,15 @@ from algo.misc import *
 
 def args_parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--experiment_id", default='exp_0', type=str)
+    parser.add_argument("--experiment_id", default='train_0', type=str)
 
-    parser.add_argument('--max_episodes', default=int(1e6), type=int)
-    parser.add_argument('--max_step_per_epi', default=10, type=int)
+    parser.add_argument('--max_episodes', default=int(1e5), type=int)
     parser.add_argument('--memory_length', default=int(5e4), type=int)
+    parser.add_argument('--max_steps', help='meta-training iterations', default=int(1e6), type=int)
+    parser.add_argument('--inner_iter', help='samples', default=5, type=int)
+    parser.add_argument('--max_step_per_epi', default=10, type=int)
+    parser.add_argument('--meta-step-size', help='meta-training step size', default=0.1, type=float)
+    parser.add_argument('--meta-final', help='meta-training step size by the end', default=0.1, type=float)
 
     parser.add_argument('--tau', default=0.001, type=float)
     parser.add_argument('--gamma', default=0.1, type=float)
@@ -21,8 +25,8 @@ def args_parse():
     parser.add_argument('--c_lr', default=0.001, type=float)
     parser.add_argument('--batch_size', default=32, type=int)
 
-    parser.add_argument("--save_interval", default=5000, type=int)
-    parser.add_argument('--step_before_train', default=100, type=int)
+    parser.add_argument("--save_interval", default=500, type=int)
+    parser.add_argument('--step_before_train', default=1000, type=int)
 
     return parser.parse_args()
 
@@ -63,7 +67,9 @@ def train():
             print(['{:>+4.2f}'.format(rew) for rew in rewards])
 
             if step >= args.step_before_train:
-                model.update(step)
+                frac_done = step / args.max_steps
+                step_size = frac_done * args.meta_final + (1 - frac_done) * args.meta_step_size
+                model.update(step, step_size)
 
             if done or t >= args.max_step_per_epi:
                 mode = 'next_p' if done else 'next_s'
@@ -81,6 +87,9 @@ def train():
             rew_epi, solved_step, solved_epi, step_epi = [], [], [], []
             if episode % args.save_interval == 0:
                 model.save_model()
+
+        if step >= args.max_steps:
+            break
 
     model.close()
 

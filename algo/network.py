@@ -50,5 +50,4 @@ class Actor(nn.Module):
         result = F.relu(self.FC3(result))
         result = F.relu(self.FC4(result))
         result = th.tanh(self.FC5(result))
-        # result = self.FC5(result)
         return result

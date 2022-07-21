@@ -104,8 +104,8 @@ def load_and_split_data(col='scenarios_big_flow_new', size=None, ratio=0.8):
 
         fpl_list, candi = [], {}
         for i, fpl in enumerate(info['fpl_list']):
-            # if i % 2 == 0 and fpl['id'] not in conflict_acs:
-            #     continue
+            if i % 6 == 0 and fpl['id'] not in conflict_acs:
+                continue
 
             # routing
             routing, section = route_dict[fpl['routing']], fpl['other']

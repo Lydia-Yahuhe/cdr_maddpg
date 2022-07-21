@@ -72,7 +72,6 @@ class ConflictScene:
 
             return self.get_states()
 
-    # todo: 将周围航空器的状态按照所在网格的下标排列
     def get_states(self, a_set=None, length=50):
         if a_set is None:
             a_set = self.agent_set

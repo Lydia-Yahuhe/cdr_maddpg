@@ -11,9 +11,10 @@ device = th.device("cuda") if th.cuda.is_available() else th.device("cpu")
 BoolTensor = th.BoolTensor
 FloatTensor = th.FloatTensor
 
-logs_path = 'trained/logs/'
-graph_path = 'trained/graph/'
-model_path = 'trained/model/'
+root = 'trained/'
+logs_path = root + 'logs/'
+graph_path = root + 'graph/'
+model_path = root + 'model/'
 if not os.path.exists(logs_path):
     os.mkdir(logs_path)
 if not os.path.exists(graph_path):
@@ -59,10 +60,20 @@ def hard_update(target, source):
         target_param.data.copy_(source_param.data)
 
 
-def average_gradients(target, size):
-    """ Gradient averaging. """
-    for param in target.parameters():
-        param.grad.data /= size
+def interpolate_vars(old_vars, new_vars, epsilon):
+    """
+    Interpolate between two sequences of variables.
+    """
+    final_vars = old_vars.copy()
+    for var_name, value in old_vars.items():
+        mean_var_value = th.mean(th.stack([var_seq[var_name] for var_seq in new_vars]), dim=0)
+        final_vars[var_name] = value + (mean_var_value - value) * epsilon
+    return final_vars
+
+
+def set_dynamic_lr(optimizer, lr):
+    for param_group in optimizer.param_groups:
+        param_group['lr'] = lr
 
 
 def gumbel_softmax(logits, discrete_list, noisy=False, var=1.0):
@@ -73,7 +84,3 @@ def gumbel_softmax(logits, discrete_list, noisy=False, var=1.0):
             action += act_noisy
         actions.append(F.gumbel_softmax(action, hard=True))
     return th.cat(actions, dim=-1)
-
-
-
-
