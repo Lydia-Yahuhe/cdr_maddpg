@@ -72,7 +72,7 @@ class ConflictScene:
 
             return self.get_states()
 
-    def get_states(self, a_set=None, length=50):
+    def get_states(self, a_set=None, length=25):
         if a_set is None:
             a_set = self.agent_set
 

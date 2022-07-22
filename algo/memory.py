@@ -38,6 +38,7 @@ class ReplayMemory:
             if len(memory) < batch_size:
                 continue
 
+            print(n, len(memory))
             yield n, [random.sample(memory, batch_size) for _ in range(num_iter)]
 
     def __len__(self):

@@ -8,7 +8,7 @@ from algo.misc import *
 
 def args_parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--experiment_id", default='train_0', type=str)
+    parser.add_argument("--experiment_id", default='train_1', type=str)
 
     parser.add_argument('--max_episodes', default=int(1e5), type=int)
     parser.add_argument('--memory_length', default=int(5e4), type=int)

@@ -39,7 +39,7 @@ class ConflictEnv(gym.Env, ABC):
 
         self.discrete_list = CmdCount
         self.action_space = spaces.Discrete(CmdCount)
-        self.observation_space = spaces.Box(low=-np.inf, high=+np.inf, shape=(350,), dtype=np.float64)
+        self.observation_space = spaces.Box(low=-np.inf, high=+np.inf, shape=(175,), dtype=np.float64)
 
         print('----------env----------')
         print('    train size: {:>6}'.format(len(self.train)))
@@ -49,6 +49,7 @@ class ConflictEnv(gym.Env, ABC):
         print('-----------------------')
 
         self.scene = None
+        self.size = len(self.train)
         self.video_out = cv2.VideoWriter('trained/scenario.avi',
                                          cv2.VideoWriter_fourcc(*'MJPG'), fps, (width, length))
 
@@ -58,9 +59,8 @@ class ConflictEnv(gym.Env, ABC):
 
         while True:
             if self.scene is None:
-                info = self.train.pop(0)
-                self.scene = ConflictScene(info, x=self.x)
-                self.train.append(info)
+                idx = np.random.randint(0, self.size)
+                self.scene = ConflictScene(self.train[idx], x=self.x)
 
             states = self.scene.next_point()
             if states is None:
