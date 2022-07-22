@@ -28,6 +28,10 @@ def train():
 
             while True:
                 states = scene.next_point()
+                if states is None:
+                    solved_epi.append(1.0)
+                    break
+
                 actions = model.choose_action(states, noisy=False)
                 next_states, rewards, done, info = env.step(actions, scene=scene)
                 times += 1
@@ -38,10 +42,6 @@ def train():
 
                 if not done:
                     solved_epi.append(0.0)
-                    break
-
-                if states is None:
-                    solved_epi.append(1.0)
                     break
 
             with open('evaluate_{}_{}.csv'.format(x, size), 'a+', newline='') as f:

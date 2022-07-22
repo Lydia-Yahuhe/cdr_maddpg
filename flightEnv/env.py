@@ -39,7 +39,7 @@ class ConflictEnv(gym.Env, ABC):
 
         self.discrete_list = CmdCount
         self.action_space = spaces.Discrete(CmdCount)
-        self.observation_space = spaces.Box(low=-np.inf, high=+np.inf, shape=(350, ), dtype=np.float64)
+        self.observation_space = spaces.Box(low=-np.inf, high=+np.inf, shape=(350,), dtype=np.float64)
 
         print('----------env----------')
         print('    train size: {:>6}'.format(len(self.train)))
@@ -86,12 +86,12 @@ class ConflictEnv(gym.Env, ABC):
         # 冲突信息
         conflict_info = {'>>> Conflict': str(self.scene.result)}
         for i, c in enumerate(self.scene.conflicts):
-            conflict_info['real_'+str(i+1)] = c.to_string()
+            conflict_info['real_' + str(i + 1)] = c.to_string()
 
         i = 0
         for a0, cs in self.scene.fake_conflicts.items():
             for c in cs:
-                conflict_info['fake_'+str(i+1)] = c.to_string()
+                conflict_info['fake_' + str(i + 1)] = c.to_string()
                 i += 1
         image = add_texts_on_base_map(conflict_info, image, (750, 80), color=(180, 238, 180))
 

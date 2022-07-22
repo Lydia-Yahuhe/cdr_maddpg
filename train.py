@@ -21,11 +21,11 @@ def args_parse():
     parser.add_argument('--tau', default=0.001, type=float)
     parser.add_argument('--gamma', default=0.1, type=float)
     parser.add_argument('--seed', default=777, type=int)
-    parser.add_argument('--a_lr', default=0.001, type=float)
-    parser.add_argument('--c_lr', default=0.001, type=float)
+    parser.add_argument('--a_lr', default=0.0001, type=float)
+    parser.add_argument('--c_lr', default=0.0001, type=float)
     parser.add_argument('--batch_size', default=32, type=int)
 
-    parser.add_argument("--save_interval", default=500, type=int)
+    parser.add_argument("--save_interval", default=1000, type=int)
     parser.add_argument('--step_before_train', default=1000, type=int)
 
     return parser.parse_args()
@@ -35,7 +35,7 @@ def train():
     args = args_parse()
     th.manual_seed(args.seed)
 
-    env = ConflictEnv(x=0, size=1, ratio=1.0)
+    env = ConflictEnv(x=0, size=16, ratio=0.75)
     model = MADDPG(env.observation_space.shape[0], env.action_space.n,
                    env.discrete_list, args)
     # model.load_model()
