@@ -118,8 +118,7 @@ class MADDPG:
             soft_update(self.critic_target, self.critic, self.args.tau)
             soft_update(self.actor_target, self.actor, self.args.tau)
 
-            self.writer.add_scalars('loss', {'critic': np.mean(self.c_loss),
-                                             'actor': np.mean(self.a_loss)}, step)
+            self.writer.add_scalars('loss', {'critic': np.mean(self.c_loss), 'actor': np.mean(self.a_loss)}, step)
             self.c_loss, self.a_loss = [], []
 
     def choose_action(self, states, noisy=True):

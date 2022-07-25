@@ -18,7 +18,8 @@ def train():
                    args, record=False)
     model.load_model()
 
-    for x in [0, 20, 40, 60]:
+    # for x in [0, 20, 40, 60]:
+    for x in [30]:
         solved_step, solved_epi = [], []
         for i, info in enumerate(env.train):
             print(i, end='\t')

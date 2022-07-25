@@ -8,13 +8,13 @@ from algo.misc import *
 
 def args_parse():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--experiment_id", default='train_1', type=str)
+    parser.add_argument("--experiment_id", default='train_2', type=str)
 
     parser.add_argument('--max_episodes', default=int(1e5), type=int)
     parser.add_argument('--memory_length', default=int(5e4), type=int)
     parser.add_argument('--max_steps', help='meta-training iterations', default=int(1e6), type=int)
     parser.add_argument('--inner_iter', help='samples', default=5, type=int)
-    parser.add_argument('--max_step_per_epi', default=10, type=int)
+    parser.add_argument('--max_step_per_epi', default=5, type=int)
     parser.add_argument('--meta-step-size', help='meta-training step size', default=0.1, type=float)
     parser.add_argument('--meta-final', help='meta-training step size by the end', default=0.1, type=float)
 
@@ -23,7 +23,7 @@ def args_parse():
     parser.add_argument('--seed', default=777, type=int)
     parser.add_argument('--a_lr', default=0.0001, type=float)
     parser.add_argument('--c_lr', default=0.0001, type=float)
-    parser.add_argument('--batch_size', default=32, type=int)
+    parser.add_argument('--batch_size', default=256, type=int)
 
     parser.add_argument("--save_interval", default=1000, type=int)
     parser.add_argument('--step_before_train', default=1000, type=int)
@@ -33,9 +33,9 @@ def args_parse():
 
 def train():
     args = args_parse()
-    th.manual_seed(args.seed)
+    # th.manual_seed(args.seed)
 
-    env = ConflictEnv(x=0, size=16, ratio=0.75)
+    env = ConflictEnv(x=30, size=16, ratio=0.75)
     model = MADDPG(env.observation_space.shape[0], env.action_space.n,
                    env.discrete_list, args)
     # model.load_model()
@@ -80,8 +80,7 @@ def train():
 
         if episode % 100 == 0:
             model.scalar("reward", np.mean(rew_epi), episode)
-            model.scalars("sr", {'step': np.mean(solved_step),
-                                 'episode': np.mean(solved_epi)}, episode)
+            model.scalars("sr", {'step': np.mean(solved_step), 'episode': np.mean(solved_epi)}, episode)
             model.scalar("times", np.mean(step_epi), episode)
 
             rew_epi, solved_step, solved_epi, step_epi = [], [], [], []
